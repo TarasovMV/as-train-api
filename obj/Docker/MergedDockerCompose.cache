@@ -1,0 +1,16 @@
+services:
+  vrrestapi:
+    build:
+      context: /Users/avsv/Projects/VrRestApi
+      dockerfile: VrRestApi/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: vrrestapi
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - /Users/avsv/.aspnet/https:/root/.aspnet/https:ro
+    - /Users/avsv/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'
