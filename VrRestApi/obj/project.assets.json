@@ -2694,11 +2694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/avsv/Projects/VrRestApi/VrRestApi/VrRestApi.csproj",
+      "projectUniqueName": "/Users/avsv/Documents/GitHub/VrRestApi/VrRestApi/VrRestApi.csproj",
       "projectName": "VrRestApi",
-      "projectPath": "/Users/avsv/Projects/VrRestApi/VrRestApi/VrRestApi.csproj",
+      "projectPath": "/Users/avsv/Documents/GitHub/VrRestApi/VrRestApi/VrRestApi.csproj",
       "packagesPath": "/Users/avsv/.nuget/packages/",
-      "outputPath": "/Users/avsv/Projects/VrRestApi/VrRestApi/obj/",
+      "outputPath": "/Users/avsv/Documents/GitHub/VrRestApi/VrRestApi/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

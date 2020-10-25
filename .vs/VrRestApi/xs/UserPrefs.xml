@@ -2,18 +2,22 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="VrRestApi/Services/SocketHandler.cs">
     <Files>
       <File FileName="VrRestApi/Controllers/TestingController.cs" Line="157" Column="99" />
-      <File FileName="VrRestApi/Services/TestingService.cs" Line="1" Column="1" />
-      <File FileName="VrRestApi/Controllers/ReportController.cs" Line="29" Column="49" />
-      <File FileName="VrRestApi/Services/ReportService.cs" Line="151" Column="22" />
-      <File FileName="VrRestApi/Services/SocketHandler.cs" Line="1" Column="1" />
-      <File FileName="VrRestApi/Services/SocketHub.cs" Line="90" Column="37" />
-      <File FileName="VrRestApi/Models/Testing.cs" Line="10" Column="17" />
+      <File FileName="VrRestApi/Services/TestingService.cs" />
+      <File FileName="VrRestApi/Controllers/ReportController.cs" />
+      <File FileName="VrRestApi/Services/ReportService.cs" />
+      <File FileName="VrRestApi/Services/SocketHandler.cs" Line="11" Column="1" />
+      <File FileName="VrRestApi/Services/SocketHub.cs" />
+      <File FileName="VrRestApi/Models/Testing.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="VrRestApi" expanded="True">
-            <Node name="VrRestApi" expanded="True" selected="True">
+            <Node name="VrRestApi" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" selected="True" />
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
               <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True" />
@@ -21,9 +25,6 @@
             </Node>
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

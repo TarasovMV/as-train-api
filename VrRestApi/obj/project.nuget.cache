@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y56hOjycagw/gU+Aevs3ngqYuixqMmfoUXBUOY02JtUtDH8eyMrv0MDDXZPVFBaFg7g+3OvC1NITjzvLQTILtw==",
+  "dgSpecHash": "RxV2QtD+hb1Y7cbcmAhaSOBRNLVw+QDm/rmMVZUdDX3rBQRENI2RuMQ5ivWe482W6Z3AdEYlmdGsPbXjO7iK3g==",
   "success": true,
-  "projectFilePath": "/Users/avsv/Projects/VrRestApi/VrRestApi/VrRestApi.csproj",
+  "projectFilePath": "/Users/avsv/Documents/GitHub/VrRestApi/VrRestApi/VrRestApi.csproj",
   "expectedPackageFiles": [
     "/Users/avsv/.nuget/packages/excellibrary/1.2011.7.31/excellibrary.1.2011.7.31.nupkg.sha512",
     "/Users/avsv/.nuget/packages/microsoft.aspnetcore.authentication.abstractions/2.2.0/microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

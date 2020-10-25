@@ -123,7 +123,7 @@ namespace VrRestApi.Services
             }
         }
 
-        private void reportUserFillTitileRow(Worksheet worksheet, int stageCounter = 3)
+        private void reportUserFillTitileRow(Worksheet worksheet, int stageCounter = 4)
         {
             worksheet.Cells[0, 0] = new Cell("№");
             worksheet.Cells[0, 1] = new Cell("ФИО");
@@ -132,8 +132,8 @@ namespace VrRestApi.Services
             {
                 worksheet.Cells[0, i + 3] = new Cell($"{i + 1} Этап");
             }
-            worksheet.Cells[0, 6] = new Cell("Итого");
-            worksheet.Cells[0, 7] = new Cell("Время, c");
+            worksheet.Cells[0, 7] = new Cell("Итого");
+            worksheet.Cells[0, 8] = new Cell("Время, c");
         }
 
         public MemoryStream ReportCommonCreate()
@@ -203,7 +203,7 @@ namespace VrRestApi.Services
             worksheet.Cells[stringCounter, 7] = new Cell(result.TestingsObj.Select(x => x.ResultTime).Sum());
         }
 
-        private void reportCommonFillTitileRow(Worksheet worksheet, int stageCounter = 3)
+        private void reportCommonFillTitileRow(Worksheet worksheet, int stageCounter = 4)
         {
             List<Cell> cells = new List<Cell>();
             //worksheet.Cells.ColumnWidth[0, 1] = 7000;
@@ -216,8 +216,8 @@ namespace VrRestApi.Services
             {
                 worksheet.Cells[0, i + 3] = new Cell($"{i + 1} Этап");
             }
-            worksheet.Cells[0, 6] = new Cell("Итого");
-            worksheet.Cells[0, 7] = new Cell("Время, c");
+            worksheet.Cells[0, 7] = new Cell("Итого");
+            worksheet.Cells[0, 8] = new Cell("Время, c");
         }
 
         private void reportSheetFillTemplate(Worksheet worksheet)
