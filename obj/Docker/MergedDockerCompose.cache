@@ -1,7 +1,7 @@
 services:
   vrrestapi:
     build:
-      context: /Users/avsv/Projects/VrRestApi
+      context: C:\Users\user\Documents\GitHub\vr-net-api
       dockerfile: VrRestApi/Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Development
@@ -11,6 +11,6 @@ services:
     - target: 80
     - target: 443
     volumes:
-    - /Users/avsv/.aspnet/https:/root/.aspnet/https:ro
-    - /Users/avsv/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+    - C:\Users\user\.aspnet\https:/root/.aspnet/https:ro
+    - C:\Users\user\.microsoft\usersecrets:/root/.microsoft/usersecrets:ro
 version: '3.4'

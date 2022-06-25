@@ -50,11 +50,12 @@ namespace VrRestApi
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll", builder => builder
-                .AllowAnyHeader()
-                //.SetIsOriginAllowed(s => true)
-                .AllowAnyOrigin()
-                //.AllowCredentials()
-                .AllowAnyMethod());
+                    .AllowAnyHeader()
+                    //.SetIsOriginAllowed(s => true)
+                    .AllowAnyOrigin()
+                    //.AllowCredentials()
+                    .AllowAnyMethod()
+                );
             });
 
         }

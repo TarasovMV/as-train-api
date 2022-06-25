@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Этот файл используется процессом публикации или упаковки вашего веб-проекта. Можно настроить поведение этого процесса,
+изменив этот файл MSBuild. Подробности см. на странице https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\user\Documents\GitHub\vr-net-api\VrRestApi\../../../Documents/Programs/net core publish</_PublishTargetUrl>
+    <History>True|2022-06-22T18:18:27.4985552Z;</History>
+  </PropertyGroup>
+</Project>
