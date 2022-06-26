@@ -308,6 +308,49 @@ namespace VrRestApi.Controllers
             return StatusCode(200);
         }
 
+        [HttpPost("testing/copy/{id}")]
+        public async Task<ActionResult<Testing>> CopyTestingById(int id)
+        {
+            var testing = dbContext.Testings
+                .AsNoTracking()
+                .Include(t => t.Questions)
+                .ThenInclude(q => q.Answers)
+                .FirstOrDefault(x => x.Id == id);
+            if (testing == null)
+            {
+                return BadRequest();
+            }
+            var testingClone = new Testing()
+            {
+                Title = testing.Title + " (копия)",
+                Type = testing.Type,
+                IsShuffleQuestions = testing.IsShuffleQuestions,
+                QuestionsCount = testing.QuestionsCount,
+                Time = testing.Time,
+                Version = testing.Version,
+                CreatedAt = testing.CreatedAt,
+                ModifiedAt = testing.ModifiedAt,
+                Questions = testing.Questions.Select(x =>
+                    new TestingQuestion() {
+                        Title = x.Title,
+                        Pano = x.Pano,
+                        VrExperience = x.VrExperience,
+                        Type = x.Type,
+                        Result = x.Result,
+                        Answers = x.Answers.Select(a =>
+                            new TestingAnswer() {
+                                Title = a.Title,
+                                IsValid = a.IsValid,
+                            })
+                        .ToList(),
+                    }
+                ).ToList(),
+            };
+            dbContext.Testings.Add(testingClone);
+            await SaveChangesAsync();
+            return testingClone;
+        }
+
         [HttpGet("testing/{id}")]
         public ActionResult<Testing> GetTestingById(int id)
         {

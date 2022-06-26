@@ -19,10 +19,62 @@ namespace VrRestApi.Services
     public class ReportService
     {
         private VrRestApiContext dbContext;
+        private AdditionalContext dbAddContext;
 
-        public ReportService(VrRestApiContext dbContext)
+        public ReportService(VrRestApiContext dbContext, AdditionalContext dbAddContext)
         {
             this.dbContext = dbContext;
+            this.dbAddContext = dbAddContext;
+        }
+
+        public MemoryStream ReportAdditionalCreate()
+        {
+            Workbook workbook = new Workbook();
+            Worksheet worksheet = new Worksheet("Report");
+            reportAdditionalSheetFill(worksheet);
+            workbook.Worksheets.Add(worksheet);
+            MemoryStream memoryStream = new MemoryStream();
+            workbook.SaveToStream(memoryStream);
+            memoryStream.Position = 0;
+            return memoryStream;
+        }
+
+        private void reportAdditionalSheetFill(Worksheet worksheet)
+        {
+            var results = dbAddContext.Participants.Where(x => x.Result != null).Include(res => res.Result);
+
+            reportAdditionalFillTitileRow(worksheet);
+
+            int stringCounter = 1;
+            foreach (var res in results)
+            {
+                reportAdditionalFillDataRow(stringCounter, res, worksheet);
+                stringCounter++;
+            }
+        }
+
+        private void reportAdditionalFillDataRow(int stringCounter, Participant p, Worksheet worksheet)
+        {
+            worksheet.Cells[stringCounter, 0] = new Cell(p.Id);
+            worksheet.Cells[stringCounter, 1] = new Cell($"{p.LastName} {p.FirstName} {p.MiddleName}");
+            worksheet.Cells[stringCounter, 2] = new Cell(p.Company ?? "-");
+            worksheet.Cells[stringCounter, 3] = new Cell(p.Result.Timestamp.ToString("dd/MM/yyyy HH:mm"));
+            worksheet.Cells[stringCounter, 4] = new Cell(p.Result.FirstScore * 10);
+            worksheet.Cells[stringCounter, 5] = new Cell(p.Result.SecondScore * 10);
+            worksheet.Cells[stringCounter, 6] = new Cell((p.Result.FirstScore + p.Result.SecondScore) * 10);
+        }
+
+        private void reportAdditionalFillTitileRow(Worksheet worksheet)
+        {
+            worksheet.Cells.ColumnWidth[1] += 15000;
+
+            worksheet.Cells[0, 0] = new Cell("ID");
+            worksheet.Cells[0, 1] = new Cell("ФИО");
+            worksheet.Cells[0, 2] = new Cell("Компания");
+            worksheet.Cells[0, 3] = new Cell("Время окончания");
+            worksheet.Cells[0, 4] = new Cell("Насос, %");
+            worksheet.Cells[0, 5] = new Cell("Резервуар, %");
+            worksheet.Cells[0, 6] = new Cell("Итого, %");
         }
 
         public MemoryStream ReportUserCreate(int id)
@@ -118,7 +170,6 @@ namespace VrRestApi.Services
                             break;
                     }
                 }
-
                 row++;
             }
         }

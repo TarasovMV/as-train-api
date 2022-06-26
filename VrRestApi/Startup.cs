@@ -26,6 +26,11 @@ namespace VrRestApi
                 db.Database.EnsureCreated();
                 db.Database.Migrate();
             }
+            using (var db = new AdditionalContext())
+            {
+                db.Database.EnsureCreated();
+                db.Database.Migrate();
+            }
         }
 
         public IConfiguration Configuration { get; }
@@ -35,16 +40,16 @@ namespace VrRestApi
             services.AddMvc();
 
             services.AddEntityFrameworkSqlite()
-            .AddDbContext<VrRestApiContext>();
+                .AddDbContext<VrRestApiContext>()
+                .AddDbContext<AdditionalContext>();
 
             services.AddSignalR();
 
             services.AddControllers();
 
             services.AddTransient<ReportService>();
-
             services.AddTransient<TestingService>();
-
+            services.AddTransient<AdditionalService>();
             services.AddSingleton<SocketHandler>();
 
             services.AddCors(options =>

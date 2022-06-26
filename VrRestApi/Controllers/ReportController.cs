@@ -40,5 +40,14 @@ namespace VrRestApi.Controllers
             Response.Headers.Add("Access-Control-Expose-Headers", "Content-Disposition");
             return File(memoryStream, "application/vnd.ms-excel", fileName);
         }
+
+        [HttpGet("additional")]
+        public ActionResult GetAdditionalReport()
+        {
+            var memoryStream = reportService.ReportAdditionalCreate();
+            string fileName = $"Report.xls";
+            Response.Headers.Add("Access-Control-Expose-Headers", "Content-Disposition");
+            return File(memoryStream, "application/vnd.ms-excel", fileName);
+        }
     }
 }
