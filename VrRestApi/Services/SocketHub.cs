@@ -18,6 +18,7 @@ namespace VrRestApi.Services
 
         public override async Task OnConnectedAsync()
         {
+            Console.Write("connect");
             await Clients.All.SendAsync("Send", $"{Context.ConnectionId} вошел в чат");
             await base.OnConnectedAsync();
         }
@@ -38,7 +39,7 @@ namespace VrRestApi.Services
         {
             socketHandler.vrDevices.Add(Context.ConnectionId, deviceId);
             await this.Clients.All.SendAsync("Send", $"{deviceId} add to vr devices");
-            //await VrDeviceConnect(deviceId);
+            await VrDeviceConnect(deviceId);
             await GetVrDevices();
         }
 
@@ -69,22 +70,9 @@ namespace VrRestApi.Services
             await this.Clients.All.SendAsync("VrDevicesHub", devices);
         }
 
-        // TODO: remove
         public async Task VrDeviceConnect(string deviceId)
         {
-            int? panoIdx = socketHandler.vrPano.GetValueOrDefault(deviceId);
-            int idx = panoIdx ?? -1;
-            if (idx == -1)
-            {
-                var connectionId = socketHandler.GetContextByDevice(deviceId);
-                if (connectionId == null)
-                {
-                    return;
-                }
-                await Clients.Client(connectionId).SendAsync("PanoMenu");
-                return;
-            }
-            await SetActivePano(deviceId, idx);
+            await this.Clients.All.SendAsync("VrDeviceConnect", deviceId);
         }
 
         public async Task ClosePano(string deviceId)
