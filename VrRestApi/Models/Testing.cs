@@ -33,6 +33,11 @@ namespace VrRestApi.Models
         Pano7 = 7,
         Pano8 = 8,
         Pano9 = 9,
+        Pano10 = 10,
+        Pano11 = 11,
+        Pano12 = 12,
+        Pano13 = 13,
+        Pano14 = 14,
     }
 
     public enum VrSceneType : int
